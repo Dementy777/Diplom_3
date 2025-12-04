@@ -46,6 +46,23 @@ public class AuthorizationTest extends BaseTest {
         homePage = new HomePage(driver);
     }
 
+    @Test
+    @DisplayName("позитивный тест на вход по кнопке «Войти в аккаунт» на главной")
+    @Description("Позитивный тест на вход через регистрацию по API, логина пользователя и проверки по email")
+    public void enterAccountButtonTest() {
+        homePage.waitForEnterAccountButton();
+        homePage.clickEnterAccountButton();
+        authorizationPage = new AuthorizationPage(driver);
+        authorizationPage.userDataEntry(user.getEmail(), user.getPassword());
+        authorizationPage.clickEnterButton();
+        homePage.waitCheckoutButton();
+        homePage.enterPersonalAccountButton();
+        profilePage = new ProfilePage(driver);
+        profilePage.waitProfilePageLoad();
+        assertEquals("Email в профиле не совпадает с зарегистрированным (игнорируем регистр)",
+                user.getEmail().toLowerCase(), profilePage.getEmailText().toLowerCase());
+    }
+
 
 
     @After
