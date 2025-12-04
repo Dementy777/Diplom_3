@@ -57,4 +57,21 @@ public class RegistrationTest extends BaseTest {
         Assert.assertEquals("Email не совпадает (игнорируя регистр)", email.toLowerCase(), profilePage.getEmailText().toLowerCase());
     }
 
+    @Test
+    @DisplayName("Проверка на невозможность создание пользователя с некорректным паролем")
+    @Description("Негативный тест на невозможность создания пользователя с 5 значным паролем")
+    public void errorShortPasswordTest() {
+        homePage = new HomePage(driver);
+        homePage.waitForPersonalAccountButton();
+        homePage.enterPersonalAccountButton();
+        authorizationPage = new AuthorizationPage(driver);
+        authorizationPage.waitForPageLoad();
+        authorizationPage.clickRegistrationLink();
+        registrationPage = new RegistrationPage(driver);
+        registrationPage.waitForPageLoad();
+        registrationPage.fillInRegistrationForm(name, email, wrongPassword);
+        Assert.assertEquals("Некорректный пароль", registrationPage.getPasswordFieldErrorText());
+        Assert.assertEquals(Constants.REGISTER_PAGE, driver.getCurrentUrl());
+    }
+
 }
