@@ -33,4 +33,16 @@ public class SwitchingSectionsTest extends BaseTest {
         Assert.assertThat(homePage.getClassNameSauces(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
     }
 
+    @Test
+    @DisplayName("Переключение на раздел «Начинки»")
+    @Description("Пользователь может переключиться на раздел «Начинки». Проверяется, что вкладка «Начинки» становится активной после клика.")
+    public void switchToFillings() {
+        homePage = new HomePage(driver);
+        homePage.waitForEnterAccountButton();
+        Assert.assertThat(homePage.getClassNameFillings(), CoreMatchers.not(CoreMatchers.containsString("tab_tab_type_current__2BEPc")));
+        homePage.clickFillingsLink();
+        homePage.waitForFillingsActive(10);
+        Assert.assertThat(homePage.getClassNameFillings(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
+    }
+
 }
