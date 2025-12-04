@@ -8,7 +8,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_CREATED;
+import static org.apache.http.HttpStatus.SC_OK;
 import static ru.yandex.practicum.utils.Constants.*;
 
 
@@ -21,7 +21,7 @@ public class UserStep {
                 .body(user)
                 .when()
                 .post(POST_REGISTER)
-                .then().statusCode(SC_CREATED);
+                .then().statusCode(SC_OK);
     }
 
     @Step("Удаление пользователя")

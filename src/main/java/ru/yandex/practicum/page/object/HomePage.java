@@ -13,9 +13,10 @@ public class HomePage {
     private final By enterAccountButton = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By checkoutButton = By.xpath(".//button[text()='Оформить заказ']");
     private final By personalAccountButton = By.xpath(".//p[contains(@class, 'AppHeader_header__linkText') and contains(@class, 'ml-2') and text()='Личный Кабинет']");
-    private final By saucesLink = By.xpath(".//span[text()='Соусы']/parent::div");
-    private final By bunsLink = By.xpath(".//span[text()='Булки']/parent::div");
-    private final By fillingLink = By.xpath(".//*[text()='Начинки']/parent::div");
+    private final By saucesLink = By.xpath("//div[contains(@class, 'tab_tab') and .//span[text()='Соусы']]");
+    private final By bunsLink = By.xpath("//div[contains(@class, 'tab_tab') and .//span[text()='Булки']]");
+    private final By fillingLink = By.xpath("//div[contains(@class, 'tab_tab') and .//*[text()='Начинки']]");
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -80,12 +81,6 @@ public class HomePage {
     @Step
     public String getClassNameFillings() {
         return driver.findElement(fillingLink).getAttribute("class");
-    }
-
-    @Step
-    public void waitForClassToBe(By locator, String expectedClass, long timeoutSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-        wait.until(ExpectedConditions.attributeContains(locator, "class", expectedClass));
     }
 
     // Методы для ожидания изменения класса у элементов

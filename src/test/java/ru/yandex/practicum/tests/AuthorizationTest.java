@@ -11,7 +11,7 @@ import ru.yandex.practicum.user.User;
 import ru.yandex.practicum.user.UserStep;
 import org.junit.Test;
 
-import static org.apache.http.HttpStatus.SC_CREATED;
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertEquals;
 import static ru.yandex.practicum.utils.Constants.HOST;
 
@@ -38,7 +38,7 @@ public class AuthorizationTest extends BaseTest {
 
         // Регистрация пользователя через API
         ValidatableResponse createResponse = userStep.createUser(user);
-        createResponse.assertThat().statusCode(SC_CREATED); // Проверка успешности регистрации
+        createResponse.assertThat().statusCode(SC_OK); // Проверка успешности регистрации
 
         accessToken = userStep.extractAccessToken(createResponse); // Получаем токен
         user.setAccessToken(accessToken); // Привязываем токен к пользователю
