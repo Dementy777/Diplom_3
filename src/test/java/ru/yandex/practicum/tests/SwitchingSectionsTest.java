@@ -21,4 +21,16 @@ public class SwitchingSectionsTest extends BaseTest {
         Assert.assertThat(homePage.getClassNameBuns(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
     }
 
+    @Test
+    @DisplayName("Переключение на раздел «Соусы»")
+    @Description("Пользователь может переключиться с раздела «Булки» на раздел «Соусы». Проверяется, что вкладка «Соусы» становится активной после клика.")
+    public void switchToSauces() {
+        homePage = new HomePage(driver);
+        homePage.waitForEnterAccountButton();
+        Assert.assertThat(homePage.getClassNameSauces(), CoreMatchers.not(CoreMatchers.containsString("tab_tab_type_current__2BEPc")));
+        homePage.clickSaucesLink();
+        homePage.waitForSaucesActive(10);
+        Assert.assertThat(homePage.getClassNameSauces(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
+    }
+
 }
