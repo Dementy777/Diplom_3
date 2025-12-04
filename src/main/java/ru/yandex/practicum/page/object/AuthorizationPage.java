@@ -1,5 +1,6 @@
 package ru.yandex.practicum.page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,20 +32,24 @@ public class AuthorizationPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(enterFormHeading));
     }
 
+    @Step
     public void userDataEntry(String email, String password) {
         webDriver.findElement(emailField).sendKeys(email);
         webDriver.findElement(passwordField).sendKeys(password);
     }
 
+    @Step
     public void clickEnterButton() {
         webDriver.findElement(enterProfileButton).click();
 
     }
 
+    @Step
     public void clickRegistrationLink() {
         webDriver.findElement(registrationLink).click();
     }
 
+    @Step
     public void clickRecoverPasswordLink() {
         webDriver.findElement(recoverPasswordLink).click();
     }

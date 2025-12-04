@@ -1,5 +1,6 @@
 package ru.yandex.practicum.page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,10 +28,12 @@ public class RegistrationPage {
 
     private final By alreadyRegisteredLink = By.xpath(".//*[text()='Уже зарегистрированы?']/a");
 
+    @Step
     public void waitForPageLoad() {
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(registerFormHeading));
     }
 
+    @Step
     public void fillInRegistrationForm(String name, String email, String password) {
         webDriver.findElement(nameField).sendKeys(name);
         webDriver.findElement(emailField).sendKeys(email);
@@ -38,10 +41,12 @@ public class RegistrationPage {
         webDriver.findElement(registerButton).click();
     }
 
+    @Step
     public String getPasswordFieldErrorText() {
         return webDriver.findElement(passwordFieldError).getText();
     }
 
+    @Step
     public void clickAlreadyRegisteredLink() {
         webDriver.findElement(alreadyRegisteredLink).click();
     }

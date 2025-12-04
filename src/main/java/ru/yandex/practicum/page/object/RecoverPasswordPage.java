@@ -1,5 +1,6 @@
 package ru.yandex.practicum.page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,10 +19,12 @@ public class RecoverPasswordPage {
 
     private final By rememberedPasswordLink = By.xpath(".//a[text()='Войти']");
 
+    @Step
     public void waitForPageLoad() {
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(restoreFormHeading));
     }
 
+    @Step
     public void clickRememberedPassword() {
         webDriver.findElement(rememberedPasswordLink).click();
     }

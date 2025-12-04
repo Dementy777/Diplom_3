@@ -1,5 +1,6 @@
 package ru.yandex.practicum.page.object;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,14 +20,17 @@ public class ProfilePage {
     private final By nameField = By.xpath(".//li[1]//input");
     private final By emailField = By.xpath(".//li[2]//input");
 
+    @Step
     public void waitProfilePageLoad() {
         new WebDriverWait(webDriver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(profileTextLocator));
     }
 
+    @Step
     public String getEmailText() {
         return webDriver.findElement(emailField).getAttribute("value");
     }
 
+    @Step
     public String getNameText() {
         return webDriver.findElement(nameField).getAttribute("value");
     }
