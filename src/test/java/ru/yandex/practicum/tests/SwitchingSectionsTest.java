@@ -17,8 +17,20 @@ public class SwitchingSectionsTest extends BaseTest {
     public void bunsSectionIsActiveOnLoad() {
         homePage = new HomePage(driver);
         homePage.waitForEnterAccountButton();
+        homePage.clickSaucesLink();
+        homePage.waitForSaucesActive(10);
+        Assert.assertThat("Вкладка 'Соусы' должна стать активной",
+                homePage.getClassNameSauces(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
+        Assert.assertThat("Вкладка 'Булки' не должна быть активной",
+                homePage.getClassNameBuns(), CoreMatchers.not(CoreMatchers.containsString("tab_tab_type_current__2BEPc")));
 
-        Assert.assertThat(homePage.getClassNameBuns(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
+        // Шаг 2: Кликаем на "Булки", чтобы вернуться
+        homePage.clickBunsLink();
+        homePage.waitForBunsActive(10);
+
+        // Проверяем: "Булки" снова активны
+        Assert.assertThat("Вкладка 'Булки' должна стать активной",
+                homePage.getClassNameBuns(), CoreMatchers.containsString("tab_tab_type_current__2BEPc"));
     }
 
     @Test
