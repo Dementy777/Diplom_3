@@ -127,8 +127,6 @@ public class AuthorizationTest extends BaseTest {
                 user.getEmail().toLowerCase(), profilePage.getEmailText().toLowerCase());
     }
 
-
-
     @After
     public void tearDown() {
         if (user != null && user.getAccessToken() != null) {
