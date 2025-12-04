@@ -104,6 +104,29 @@ public class AuthorizationTest extends BaseTest {
                 user.getEmail().toLowerCase(), profilePage.getEmailText().toLowerCase());
     }
 
+    @Test
+    @DisplayName("позитивный тест на вход по кнопке в форме восстановления пароля")
+    @Description("Позитивный тест на вход через регистрацию по API, логина пользователя и проверки по email")
+    public void enterLinkInRecoverPasswordTest() {
+        homePage.waitForEnterAccountButton();
+        homePage.clickEnterAccountButton();
+        authorizationPage = new AuthorizationPage(driver);
+        authorizationPage.waitForPageLoad();
+        authorizationPage.clickRecoverPasswordLink();
+        recoverPasswordPage = new RecoverPasswordPage(driver);
+        recoverPasswordPage.waitForPageLoad();
+        recoverPasswordPage.clickRememberedPassword();
+        authorizationPage.waitForPageLoad();
+        authorizationPage.userDataEntry(user.getEmail(), user.getPassword());
+        authorizationPage.clickEnterButton();
+        homePage.waitCheckoutButton();
+        homePage.enterPersonalAccountButton();
+        profilePage = new ProfilePage(driver);
+        profilePage.waitProfilePageLoad();
+        assertEquals("Email в профиле не совпадает с зарегистрированным (игнорируем регистр)",
+                user.getEmail().toLowerCase(), profilePage.getEmailText().toLowerCase());
+    }
+
 
 
     @After
