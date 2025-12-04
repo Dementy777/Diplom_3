@@ -6,9 +6,9 @@ import io.restassured.response.ValidatableResponse;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
+import ru.yandex.practicum.page.object.*;
 import ru.yandex.practicum.user.User;
 import ru.yandex.practicum.user.UserStep;
-import ru.yandex.practicum.pageObject.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -3,7 +3,7 @@ package ru.yandex.practicum.tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 
-import ru.yandex.practicum.pageObject.HomePage;
+import ru.yandex.practicum.page.object.HomePage;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
