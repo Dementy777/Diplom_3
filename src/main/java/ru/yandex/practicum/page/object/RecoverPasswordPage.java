@@ -19,12 +19,12 @@ public class RecoverPasswordPage {
 
     private final By rememberedPasswordLink = By.xpath(".//a[text()='Войти']");
 
-    @Step
+    @Step("Ожидание загрузки страницы «Восстановление пароля»")
     public void waitForPageLoad() {
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(restoreFormHeading));
     }
 
-    @Step
+    @Step("Нажатие на ссылку «Войти» под формой восстановления")
     public void clickRememberedPassword() {
         webDriver.findElement(rememberedPasswordLink).click();
     }

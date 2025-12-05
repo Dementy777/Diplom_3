@@ -20,17 +20,17 @@ public class ProfilePage {
     private final By nameField = By.xpath(".//li[1]//input");
     private final By emailField = By.xpath(".//li[2]//input");
 
-    @Step
+    @Step("Ожидание загрузки страницы профиля")
     public void waitProfilePageLoad() {
         new WebDriverWait(webDriver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(profileTextLocator));
     }
 
-    @Step
+    @Step("Получение значения поля «Email»")
     public String getEmailText() {
         return webDriver.findElement(emailField).getAttribute("value");
     }
 
-    @Step
+    @Step("Получение значения поля «Имя»")
     public String getNameText() {
         return webDriver.findElement(nameField).getAttribute("value");
     }

@@ -32,24 +32,24 @@ public class AuthorizationPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(enterFormHeading));
     }
 
-    @Step
+    @Step("Ввод данных пользователя: email {email} и пароль {password}")
     public void userDataEntry(String email, String password) {
         webDriver.findElement(emailField).sendKeys(email);
         webDriver.findElement(passwordField).sendKeys(password);
     }
 
-    @Step
+    @Step("Нажатие на кнопку «Войти»")
     public void clickEnterButton() {
         webDriver.findElement(enterProfileButton).click();
 
     }
 
-    @Step
+    @Step("Переход по ссылке «Зарегистрироваться»")
     public void clickRegistrationLink() {
         webDriver.findElement(registrationLink).click();
     }
 
-    @Step
+    @Step("Переход по ссылке «Восстановить пароль»")
     public void clickRecoverPasswordLink() {
         webDriver.findElement(recoverPasswordLink).click();
     }

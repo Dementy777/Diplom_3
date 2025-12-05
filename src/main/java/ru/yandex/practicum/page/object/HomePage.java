@@ -21,73 +21,67 @@ public class HomePage {
         this.driver = driver;
     }
 
-    @Step
+    @Step("Нажатие на кнопку «Войти в аккаунт»")
     public void clickEnterAccountButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(enterAccountButton));
         driver.findElement(enterAccountButton).click();
     }
-    @Step
+    @Step("Ожидание появления кнопки «Войти в аккаунт»")
     public void waitForEnterAccountButton() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(enterAccountButton));
     }
-    @Step
+    @Step("Ожидание появления кнопки «Оформить заказ»")
     public void waitCheckoutButton() {
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.visibilityOfElementLocated(checkoutButton));
     }
-    @Step
+    @Step("Ожидание появления кнопки «Личный Кабинет»")
     public void waitForPersonalAccountButton() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(personalAccountButton));
     }
-    @Step
+    @Step("Нажатие на кнопку «Личный Кабинет»")
     public void enterPersonalAccountButton() {
         driver.findElement(personalAccountButton).click();
     }
-    @Step
+    @Step("Нажатие на вкладку «Булки»")
     public void clickBunsLink() {
         driver.findElement(bunsLink).click();
     }
-    @Step
+    @Step("Нажатие на вкладку «Соусы»")
     public void clickSaucesLink() {
         driver.findElement(saucesLink).click();
     }
-    @Step
+    @Step("Нажатие на вкладку «Начинки»")
     public void clickFillingsLink() {
         driver.findElement(fillingLink).click();
     }
-    @Step
+    @Step("Получение атрибута class у вкладки «Булки»")
     public String getClassNameBuns() {
         return driver.findElement(bunsLink).getAttribute("class");
     }
-    @Step
+    @Step("Получение атрибута class у вкладки «Соусы»")
     public String getClassNameSauces() {
         return driver.findElement(saucesLink).getAttribute("class");
     }
-    @Step
+    @Step("Получение атрибута class у вкладки «Начинки»")
     public String getClassNameFillings() {
         return driver.findElement(fillingLink).getAttribute("class");
     }
-    @Step
-    public void waitForClassToBe(By locator, String expectedClass, long timeoutSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-        wait.until(ExpectedConditions.attributeContains(locator, "class", expectedClass));
-    }
-
     // Методы для ожидания изменения класса у элементов
 
-    @Step
+    @Step("Ожидание, что вкладка «Булки» станет активной")
     public void waitForBunsActive(long timeoutSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
                 .until(ExpectedConditions.attributeContains(bunsLink, "class", "tab_tab_type_current__2BEPc"));
     }
-    @Step
+    @Step("Ожидание, что вкладка «Соусы» станет активной")
     public void waitForSaucesActive(long timeoutSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
                 .until(ExpectedConditions.attributeContains(saucesLink, "class", "tab_tab_type_current__2BEPc"));
     }
-    @Step
+    @Step("Ожидание, что вкладка «Начинки» станет активной")
     public void waitForFillingsActive(long timeoutSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
                 .until(ExpectedConditions.attributeContains(fillingLink, "class", "tab_tab_type_current__2BEPc"));

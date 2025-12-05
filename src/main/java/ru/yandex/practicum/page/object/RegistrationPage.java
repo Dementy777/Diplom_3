@@ -28,12 +28,12 @@ public class RegistrationPage {
 
     private final By alreadyRegisteredLink = By.xpath(".//*[text()='Уже зарегистрированы?']/a");
 
-    @Step
+    @Step("Ожидание загрузки страницы «Регистрация»")
     public void waitForPageLoad() {
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(registerFormHeading));
     }
 
-    @Step
+    @Step("Заполнение формы регистрации: имя {name}, email {email}, пароль {password}")
     public void fillInRegistrationForm(String name, String email, String password) {
         webDriver.findElement(nameField).sendKeys(name);
         webDriver.findElement(emailField).sendKeys(email);
@@ -41,12 +41,12 @@ public class RegistrationPage {
         webDriver.findElement(registerButton).click();
     }
 
-    @Step
+    @Step("Получение текста ошибки под полем «Пароль»")
     public String getPasswordFieldErrorText() {
         return webDriver.findElement(passwordFieldError).getText();
     }
 
-    @Step
+    @Step("Нажатие на ссылку «Уже зарегистрированы? Войти»")
     public void clickAlreadyRegisteredLink() {
         webDriver.findElement(alreadyRegisteredLink).click();
     }
