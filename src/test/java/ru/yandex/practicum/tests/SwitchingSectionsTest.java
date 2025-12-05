@@ -13,7 +13,7 @@ public class SwitchingSectionsTest extends BaseTest {
 
     @Test
     @DisplayName("Проверка: переключение на раздел «Булки» с раздела «Соусы»")
-    @Description("При открытии главной страницы раздел «Булки» должен быть выбран по умолчанию. Проверяется наличие активного CSS-класса у вкладки.")
+    @Description("При открытии главной страницы на разделе «Булки» переход на раздел «Соусы» и обратно. Проверяется наличие активного CSS-класса у вкладки.")
     public void bunsActiveOnLoadTest() {
         homePage = new HomePage(driver);
         homePage.waitForEnterAccountButton();
