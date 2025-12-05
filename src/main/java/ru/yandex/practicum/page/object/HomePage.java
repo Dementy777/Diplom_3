@@ -76,6 +76,12 @@ public class HomePage {
     }
 
     // Методы для ожидания изменения класса у элементов
+
+    @Step
+    public void waitForBunsActive(long timeoutSeconds) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+                .until(ExpectedConditions.attributeContains(bunsLink, "class", "tab_tab_type_current__2BEPc"));
+    }
     @Step
     public void waitForSaucesActive(long timeoutSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
@@ -86,4 +92,6 @@ public class HomePage {
         new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
                 .until(ExpectedConditions.attributeContains(fillingLink, "class", "tab_tab_type_current__2BEPc"));
     }
+
+
 }
